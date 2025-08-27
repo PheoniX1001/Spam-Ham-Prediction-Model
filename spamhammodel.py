@@ -37,8 +37,9 @@ ds.drop(columns={'Unnamed: 2', 'Unnamed: 3', 'Unnamed: 4'},inplace=True)
 
 ds_hams=ds[ds['class']=='ham']
 ds_spams=ds[ds['class']=='spam']
-tbr=ds_hams.sample(760,random_state=223)
 
+#Balancing the dataset for model (no.of hams and spams are selected to be nearly equal)
+tbr=ds_hams.sample(760,random_state=223)
 df_balanced=pd.concat([ds_spams,tbr])
 df_balanced['msg']=df_balanced['msg'].apply(clean)
 
